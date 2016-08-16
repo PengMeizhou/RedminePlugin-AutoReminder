@@ -1,0 +1,26 @@
+= Advanced Redmine Notifications
+
+E-mail notification of issues due date you are involved in (Assignee, Author, Watcher)
+
+= Usage
+
+The plugin runs as a rake task so you have to set it up in task sheduler
+
+cd C:\Bitnami\redmine-3.3.0-1\apps\redmine\htdocs
+bundle exec rake redmine:send_reminders_all RAILS_ENV=production
+bundle exec rake redmine:send_reminders_all days=1 project=TestProject tracker=1 RAILS_ENV=production
+
+There are 3 options you can set up
+  * days     => number of days to remind about (defaults to 7)
+  * tracker  => id of tracker (defaults to all trackers)
+  * project  => id or identifier of project (defaults to all projects)
+
+Disable IP V6:
+
+1.Run as administrator
+2.netsh interface IPV6 set global randomizeidentifier=disabled
+3.netsh interface IPV6 set privacy state=disable
+4.netsh interface ipv6 6to4 set state state=disabled
+5.netsh interface ipv6 isatap set state state=disabled
+6.netsh interface ipv6 set teredo type=disable
+7.shutdown IPV6
